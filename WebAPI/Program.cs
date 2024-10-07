@@ -1,5 +1,6 @@
 using FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
+using System.Globalization;
 using WebAPI.Requests;
 using WebAPI.Services;
 
@@ -12,6 +13,9 @@ namespace WebAPI
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
+            var cultureInfo = new CultureInfo("en-GB");
+            CultureInfo.DefaultThreadCurrentCulture = cultureInfo;
+            CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
             builder.Services.AddControllers();
             builder.Services.AddScoped<IValidator<CalculatorRequest>, CalculatorRequestValidator>();
