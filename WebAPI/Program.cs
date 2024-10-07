@@ -1,3 +1,8 @@
+using FluentValidation;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
+using WebAPI.Requests;
+using WebAPI.Services;
+
 namespace WebAPI
 {
     public class Program
@@ -9,9 +14,15 @@ namespace WebAPI
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.AddScoped<IValidator<CalculatorRequest>, CalculatorRequestValidator>();
+            builder.Services.AddScoped<ICalculatorService, CalculatorService>();
+            builder.Services.AddFluentValidationAutoValidation();
+
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+            
+
 
             var app = builder.Build();
 
