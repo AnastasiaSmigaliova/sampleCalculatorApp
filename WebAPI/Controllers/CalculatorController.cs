@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using WebAPI.Requests;
+using WebAPI.Responses;
 using WebAPI.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -20,15 +21,29 @@ namespace WebAPI.Controllers
         [HttpGet("add")]
         public IActionResult Add([FromQuery] CalculatorRequest request)
         {
-            var result = _calculatorService.Add(double.Parse(request.X), double.Parse(request.Y));
-            return Ok(result);
+            try
+            {
+                var result = _calculatorService.Add(double.Parse(request.X), double.Parse(request.Y));
+                return Ok(result);
+            }
+            catch (OverflowException ex)
+            {
+                return BadRequest(new ErrorResponse { Message = ex.Message });
+            }
         }
-        // GET: api/<CalculatorController>/substract
-        [HttpGet("substract")]
-        public IActionResult Substract([FromQuery] CalculatorRequest request)
+        // GET: api/<CalculatorController>/subtract
+        [HttpGet("subtract")]
+        public IActionResult Subtract([FromQuery] CalculatorRequest request)
         {
-            var result = _calculatorService.Substract(double.Parse(request.X), double.Parse(request.Y));
-            return Ok(result);
+            try
+            {
+                var result = _calculatorService.Subtract(double.Parse(request.X), double.Parse(request.Y));
+                return Ok(result);
+            }
+            catch (OverflowException ex)
+            {
+                return BadRequest(new ErrorResponse { Message = ex.Message });
+            }
         }
     }
 }

@@ -16,6 +16,8 @@ namespace WebAPI
             builder.Services.AddControllers();
             builder.Services.AddScoped<IValidator<CalculatorRequest>, CalculatorRequestValidator>();
             builder.Services.AddScoped<ICalculatorService, CalculatorService>();
+
+            // Add automatic validation for FluentValidation validators
             builder.Services.AddFluentValidationAutoValidation();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
