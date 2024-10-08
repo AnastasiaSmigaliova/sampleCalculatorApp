@@ -3,11 +3,9 @@ using WebAPI.Controllers;
 using WebAPI.Requests;
 using Moq;
 using WebAPI.Services;
-using Microsoft.VisualBasic;
-using Microsoft.VisualStudio.TestPlatform.CommunicationUtilities;
 using WebAPI.Responses;
 
-namespace Tests
+namespace WebAPI.UnitTests.Controllers
 {
     public class CalculatorControllerTests
     {

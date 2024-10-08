@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebAPI.Services;
+﻿using WebAPI.Services;
 
-namespace Tests
+namespace WebAPI.UnitTests.Services
 {
     public class CalculatorServiceTests
     {

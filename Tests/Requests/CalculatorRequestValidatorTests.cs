@@ -1,7 +1,7 @@
 ﻿using WebAPI.Requests;
 using FluentValidation.TestHelper;
 
-namespace Tests
+namespace WebAPI.UnitTests.Requests
 {
     public class CalculatorRequestValidatorTests
     {
